@@ -60,10 +60,11 @@
 \subsection{Defining the problem}
 
 \label{definitions}
-	Information is given on a training set of passengers of the Titanic, for which the survival outcome is known. Given the training set information, the challenge is to predict each passenger?s survival outcome from a test set of passengers. The details of the challenge are given on the Kaggle site.
+	Information is given on a training set of passengers of the Titanic, for which the survival outcome is known. Given the training set information, the goal remains to predict each passenger?s survival outcome from a test set of passengers. The details of the challenge are given on the Kaggle site.
 \newline
 \newline
 We will apply machine learning tools to solve the problem. In this case, we may consider approaches based on random forests. And will use Python package to plot the result. The python package used includes:
+
 \begin{itemize}
 	\item NumPy
 	\item Pandas
@@ -109,7 +110,23 @@ Figure~\ref{fig:test} shows the distribution of survival on gender age and class
 
 
 \subsection{Simple trying}
-Simply pick gender as classfier and get the result.
+In the film, they tried to rescue women and children first, so a good guess would be on gender. From the graphical view of the data, it’s clear that although more men died and survived in raw value counts, females had a greater survival rate proportionally(~25\%), than men (~20\%).
+\newline
+\newline
+After applying that all the female would survive, the survival rate become 36.36\%, which comes close to the original rate 38.38\%. However, we can refine our results by considering other variables.
+\newline
+\newline
+We ruled out the age factor, as the survival rate doesn't change much with or without the involvement of age. Thus we split the fare class into four payments range and assumes that any group with more than half survivors will always be modeled to survive, while the rest will be mapped to death. The result is different from the previous one in that women in 3rd class who paid more than \$20 will not survive, which bring the survival rate closer to training set.
+
+% \begin{figure}[h]
+% \begin{flushleft}
+
+% \hspace*{-1.2in}
+% \includegraphics[scale=0.4]{eps/survival_gender_count.eps} 
+% \caption{Survival on gender, age and class}
+% \label {fig:test}
+% \end{flushleft}
+% \end{figure}
 
 \subsection{Supervised machine learning}
 
