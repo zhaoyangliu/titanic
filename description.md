@@ -11,3 +11,12 @@ Preliminary Reports are due lecture 15 at 11:59 PM. Each group must submit a two
 
 ### Final Reports
 Final Reports are due June 10th at 11:59PM. The final report should be about 4-5 pages in length (single spaced) and should include your project goals and motivation, along with a concise and clear statement of what results you obtained. Also mention which aspects of future work would be most interesting. Clarity in your report and presentation will contribute significantly to your grade. 
+
+
+### Preliminary Reports
+Information is presented as a training set regarding the survivla rate and background of passengers from the Titanic. Given the taining set information, the goal remains to predict each passenger's survival outcome from a test set of passengers.
+
+Steps completed:
+We have walked through the tutorials with Excel and Python. In excel, we generated pivot tables according to different sets of variables selected, then we located the most influential factors by observing these tables. Once a potential single-variable pattern was found, we made decisions by determining if the involved columns satisify teh pattern, with IF statement within each cell. We also tried to improve the model by extending the earlier hypothesis that maybe multiple variables have an effect o nthe results of survival. We tested age, sex, class, payments. The conclusion we made so far is that all males will not survive, and so will the women in third class who paid more than 20 dollars for their tickets.
+
+For python,
