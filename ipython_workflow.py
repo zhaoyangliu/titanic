@@ -53,22 +53,22 @@ def draw_survival_gender_plcass(df):
     # I know, thats a lot of subsets. After we do that we call value_counts() so it it can be easily plotted as a bar graph.
     # this is repeated for each gender class pair.
     ax1=fig.add_subplot(141)
-    df.Survived[df.Sex == 'female'][df.Pclass != 3].value_counts(ascending=True).plot(kind='bar', label='female highclass', color='#FA2479', alpha=a)
+    df.Survived[df.Sex == 'male'][df.Pclass != 3].value_counts().plot(kind='bar', label='male high class', color='darkblue', alpha=a)
     ax1.set_xticklabels(["Died", "Survived"], rotation=0)
     title("Survival on Gender and Class"); legend(loc='best')
 
     ax2=fig.add_subplot(142, sharey=ax1)
-    df.Survived[df.Sex == 'female'][df.Pclass == 3].value_counts().plot(kind='bar', label='female, low class', color='pink', alpha=a)
+    df.Survived[df.Sex == 'female'][df.Pclass != 3].value_counts(ascending=True).plot(kind='bar', label='female, high class', color='#FA2479', alpha=a)
     ax2.set_xticklabels(["Died","Survived"], rotation=0)
     legend(loc='best')
 
     ax4=fig.add_subplot(143, sharey=ax1)
-    df.Survived[df.Sex == 'male'][df.Pclass != 3].value_counts().plot(kind='bar', label='male highclass', alpha=a, color='darkblue')
+    df.Survived[df.Sex == 'male'][df.Pclass == 3].value_counts().plot(kind='bar', label='male low class', alpha=a, color='lightblue')
     ax4.set_xticklabels(["Died","Survived"], rotation=0)
     legend(loc='best')
 
     ax3=fig.add_subplot(144, sharey=ax1)
-    df.Survived[df.Sex == 'male'][df.Pclass == 3].value_counts().plot(kind='bar', label='male, low class',color='lightblue', alpha=a)
+    df.Survived[df.Sex == 'female'][df.Pclass == 3].value_counts().plot(kind='bar', label='female, low class',color='pink', alpha=a)
     ax3.set_xticklabels(["Died","Survived"], rotation=0)
     legend(loc='best')
 
@@ -87,12 +87,12 @@ def draw_survival_gender_age(df):
     legend(loc='best')
 
     ax2=fig.add_subplot(142, sharey=ax1)
-    df.Survived[df.Sex == 'female'][df.Age >= 18.00].value_counts(ascending=True).plot(kind='bar', label='female, adult', color='pink', alpha=a)
+    df.Survived[df.Sex == 'female'][df.Age >= 18.00].value_counts(ascending=True).plot(kind='bar', label='female, adult', color='#FA2479', alpha=a)
     ax2.set_xticklabels(["Died","Survived"], rotation=0)
     legend(loc='best')
 
     ax3=fig.add_subplot(143, sharey=ax1)
-    df.Survived[df.Sex == 'male'][df.Age < 18.00].value_counts().plot(kind='bar', label='male children', alpha=a, color='darkblue')
+    df.Survived[df.Sex == 'male'][df.Age < 18.00].value_counts().plot(kind='bar', label='male children', alpha=a, color='lightblue')
     ax3.set_xticklabels(["Died","Survived"], rotation=0)
     legend(loc='best')
 

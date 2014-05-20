@@ -30,9 +30,6 @@ The point of this competition is to predict if an individual will survive based 
 * Traveling Class (called pclass in the data)
 * Sex
 * Age
-* Fare Price
-
-
 
 
 
