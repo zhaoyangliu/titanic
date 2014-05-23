@@ -131,40 +131,42 @@ def draw_logit_regression(df):
     plt.savefig("2.eps")
 
 
+    from statsmodels.nonparametric.kde import KDEUnivariate
+
     fig = plt.figure(figsize=(18,9), dpi=1600)
     a = .2
 
     # Below are examples of more advanced plotting. 
     # It it looks strange check out the tutorial above.
     fig.add_subplot(221, axisbg="#DBDBDB")
-    kde_res = KDE(res.predict())
+    kde_res = KDEUnivariate(res.predict())
     kde_res.fit()
     plt.plot(kde_res.support,kde_res.density)
     plt.fill_between(kde_res.support,kde_res.density, alpha=a)
     title("Distribution of our Predictions")
 
     fig.add_subplot(222, axisbg="#DBDBDB")
-    plt.scatter(res.predict(),x['C(sex)[T.male]'] , alpha=a)
+    plt.scatter(res.predict(),x['C(Sex)[T.male]'] , alpha=a)
     plt.grid(b=True, which='major', axis='x')
     plt.xlabel("Predicted chance of survival")
     plt.ylabel("Gender Bool")
     title("The Change of Survival Probability by Gender (1 = Male)")
 
     fig.add_subplot(223, axisbg="#DBDBDB")
-    plt.scatter(res.predict(),x['C(pclass)[T.3]'] , alpha=a)
+    plt.scatter(res.predict(),x['C(Pclass)[T.3]'] , alpha=a)
     plt.xlabel("Predicted chance of survival")
     plt.ylabel("Class Bool")
     plt.grid(b=True, which='major', axis='x')
     title("The Change of Survival Probability by Lower Class (1 = 3rd Class)")
 
     fig.add_subplot(224, axisbg="#DBDBDB")
-    plt.scatter(res.predict(),x.age , alpha=a)
+    plt.scatter(res.predict(),x.Age , alpha=a)
     plt.grid(True, linewidth=0.15)
     title("The Change of Survival Probability by Age")
     plt.xlabel("Predicted chance of survival")
     plt.ylabel("Age")
+    plt.savefig("prediction.eps")
 
-    plt.savefig("3.eps")
 
 df = read_file()
 # draw_survival(df)
