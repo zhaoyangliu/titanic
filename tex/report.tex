@@ -182,11 +182,15 @@ The Figure~\ref{fig:pre} shows the distribution of our predictions. The second g
 %----------------------------------------------------------------------------------------
 
 \section{Next step}
+Next step is too try use support vector machine and random forest methods to make prediction.
+
 
 \subsection{SVM}
 
-\subsection{Random Forest}
+Logit model we just implemented was great in that it showed exactly where to draw our decision boundary. A linear line is okay, but we can do better with a more complex decision boundary like a wave, circle, or maybe some sort of strange polygon would describe the variance observed in our sample better than a line.
 
+\subsection{Random Forest}
+Random forests are an ensemble learning method for classification (and regression) that operate by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes output by individual trees. This technique is a form of non-parametric modeling that does away with all those equations we created above, and uses raw computing power and a clever statistical observation to tease the structure out of the data.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
@@ -195,8 +199,6 @@ The Figure~\ref{fig:pre} shows the distribution of our predictions. The second g
 
 \section{Possible results}
 
-
-
-
+SVM and Random Forest are supposed to perform better than Logit model, maybe could get an accuracy more than 0.8
 
 \end{document}
