@@ -8,6 +8,7 @@ import numpy as np
 import statsmodels.api as sm
 
 from statsmodels.nonparametric import  smoothers_lowess
+from statsmodels.nonparametric import kde
 from pandas import Series,DataFrame
 from patsy import dmatrices
 import matplotlib.pyplot as plt
@@ -27,7 +28,7 @@ def draw_survival(df):
     plt.ylabel("Number of Persons", fontsize=20)
     ax=plt.gca()
     ax.set_xticklabels(["Died", "Survived"], rotation=0)
-    plt.savefig("survival_count.eps")
+    plt.savefig("tex/eps/survival_count.eps")
 
 def draw_survival_on_gender(df):
 
@@ -42,7 +43,7 @@ def draw_survival_on_gender(df):
     plt.ylabel("Number of Persons", fontsize=20)
     title("Survival on Gender (count)"); legend(loc='best')
     as1.set_xticklabels(["Died","Survived"], rotation=0)
-    plt.savefig("survival_gender_count.eps")
+    plt.savefig("tex/eps/survival_gender_count.eps")
 
 
 def draw_survival_gender_plcass(df):
@@ -72,7 +73,7 @@ def draw_survival_gender_plcass(df):
     ax3.set_xticklabels(["Died","Survived"], rotation=0)
     legend(loc='best')
 
-    plt.savefig("survival_gender_class.eps")
+    plt.savefig("tex/eps/survival_gender_class.eps")
 
 def draw_survival_gender_age(df):
     a=.65 # our alpha or opacity level.
@@ -101,10 +102,77 @@ def draw_survival_gender_age(df):
     ax4.set_xticklabels(["Died","Survived"], rotation=0)
     legend(loc='best')
 
-    plt.savefig("survival_gender_age.eps")
+    plt.savefig("tex/eps/survival_gender_age.eps")
+
+def draw_logit_regression(df):
+    w = open("logit_result.txt", "w")
+    formula = 'Survived ~ C(Pclass) + C(Sex) + Age + SibSp  + C(Embarked)' # here the ~ sign is an = sign, and the features of our dataset
+    results = {} # create a results dictionary to hold our regression results for easy analysis later
+    y, x = dmatrices(formula, data=df, return_type='dataframe')
+    model = sm.Logit(y, x)
+    res = model.fit()
+    results['Logit'] = [res, formula]
+    print >> w, res.summary()
+    # Plot Predictions Vs Actual
+    plt.figure(figsize=(18,4));
+    plt.subplot(121, axisbg="#DBDBDB")
+    # generate predictions from our fitted model
+    ypred = res.predict(x)
+    plt.plot(x.index, ypred, 'bo', x.index, y, 'mo', alpha=.25);
+    plt.grid(color='white', linestyle='dashed')
+    plt.title('Logit predictions, Blue: \nFitted/predicted values: Red');
+    plt.savefig("1.eps")
+
+    # Residuals
+    plt.subplot(122, axisbg="#DBDBDB")
+    plt.plot(res.resid, 'r-')
+    plt.grid(color='white', linestyle='dashed')
+    plt.title('Logit Residuals');
+    plt.savefig("2.eps")
+
+
+    fig = plt.figure(figsize=(18,9), dpi=1600)
+    a = .2
+
+    # Below are examples of more advanced plotting. 
+    # It it looks strange check out the tutorial above.
+    fig.add_subplot(221, axisbg="#DBDBDB")
+    kde_res = KDE(res.predict())
+    kde_res.fit()
+    plt.plot(kde_res.support,kde_res.density)
+    plt.fill_between(kde_res.support,kde_res.density, alpha=a)
+    title("Distribution of our Predictions")
+
+    fig.add_subplot(222, axisbg="#DBDBDB")
+    plt.scatter(res.predict(),x['C(sex)[T.male]'] , alpha=a)
+    plt.grid(b=True, which='major', axis='x')
+    plt.xlabel("Predicted chance of survival")
+    plt.ylabel("Gender Bool")
+    title("The Change of Survival Probability by Gender (1 = Male)")
+
+    fig.add_subplot(223, axisbg="#DBDBDB")
+    plt.scatter(res.predict(),x['C(pclass)[T.3]'] , alpha=a)
+    plt.xlabel("Predicted chance of survival")
+    plt.ylabel("Class Bool")
+    plt.grid(b=True, which='major', axis='x')
+    title("The Change of Survival Probability by Lower Class (1 = 3rd Class)")
+
+    fig.add_subplot(224, axisbg="#DBDBDB")
+    plt.scatter(res.predict(),x.age , alpha=a)
+    plt.grid(True, linewidth=0.15)
+    title("The Change of Survival Probability by Age")
+    plt.xlabel("Predicted chance of survival")
+    plt.ylabel("Age")
+
+    plt.savefig("3.eps")
 
 df = read_file()
-draw_survival(df)
-draw_survival_on_gender(df)
-draw_survival_gender_plcass(df)
-draw_survival_gender_age(df)
+# draw_survival(df)
+# draw_survival_on_gender(df)
+# draw_survival_gender_plcass(df)
+# draw_survival_gender_age(df)
+draw_logit_regression(df)
+
+
+
+

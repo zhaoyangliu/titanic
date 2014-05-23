@@ -27,7 +27,7 @@
 \usepackage{natbib} % Required to change bibliography style to APA
 \usepackage{amsmath} % Required for some math elements 
 
-\setlength\parindent{0pt} % Removes all indentation from paragraphs
+\setlength\parindent{15pt} % Removes all indentation from paragraphs
 
 \renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
 
@@ -110,12 +110,10 @@ Figure~\ref{fig:test} shows the distribution of survival on gender age and class
 
 
 \subsection{Simple trying}
-In the film, they tried to rescue women and children first, so a good guess would be on gender. From the graphical view of the data, it’s clear that although more men died and survived in raw value counts, females had a greater survival rate proportionally(~25\%), than men (~20\%).
-\newline
-\newline
-After applying that all the female would survive, the survival rate become 36.36\%, which comes close to the original rate 38.38\%. However, we can refine our results by considering other variables.
-\newline
-\newline
+In the film, they tried to rescue women and children first, so a good guess would be on gender. From the graphical view of the data, it’s clear that although more men died and survived in raw value counts, females had a greater survival rate proportionally(~25\%), than men (~20\%).\\
+
+After applying that all the female would survive, the survival rate become 36.36\%, which comes close to the original rate 38.38\%. However, we can refine our results by considering other variables.\\
+
 We ruled out the age factor, as the survival rate doesn't change much with or without the involvement of age. Thus we split the fare class into four payments range and assumes that any group with more than half survivors will always be modeled to survive, while the rest will be mapped to death. The result is different from the previous one in that women in 3rd class who paid more than \$20 will not survive, which bring the survival rate closer to training set.
 
 % \begin{figure}[h]
@@ -130,6 +128,54 @@ We ruled out the age factor, as the survival rate doesn't change much with or wi
 
 \subsection{Supervised machine learning}
 
+In paticular, we are going to try \textbf{Logistic Regression}. In statistics, logistic regression or logit regression is a type of regression analysis used for predicting the outcome of a categorical dependent variable. We use python package \textbf{statsmodels} to build the model and use predictor variable including ``Plass'', ``Sex'', ``Embarked'', ``Age'', ``SibSp''. \\
+
+First, we define our formula for our Logit regression. In the next cell we create a regression friendly dataframe that sets up boolean values for the categorical variables in our formula and lets our regression model know the types of inputs we're giving it. The model is then instantiated and fitted before a summary of the model's performance is printed. In the last cell we graphically compare the predictions of our model to the actual values we are trying to predict, as well as the residual errors from our model to check for any structure we may have missed. The result as Table~\ref{tab:logit} shows.
+
+
+\begin{table}[h]
+  \caption{Logit Regression Results}
+\begin{tabular}{| l | l | l | l | l | l | l |}
+  \hline
+   & coef & std err & z & P \textgreater z & [95.0\% Conf. & Int.] \\
+   \hline
+C(Pclass)[T.2]    &  -1.2673    &  0.299   &  -4.245    &  0.000     &   -1.852  &  -0.682 \\
+  \hline
+C(Pclass)[T.3]    &  -2.4966    &  0.296   &  -8.422    &  0.000     &   -3.078  &  -1.916 \\
+  \hline
+C(Sex)[T.male]    &  -2.6239    &  0.218   & -12.060    &  0.000     &   -3.050  &  -2.197 \\
+  \hline
+C(Embarked)[T.Q]  &  -0.8351    &  0.597   &  -1.398    &  0.162     &   -2.006  &   0.335 \\
+  \hline
+C(Embarked)[T.S]  &  -0.4254    &  0.271   &  -1.572    &  0.116     &   -0.956  &   0.105 \\
+  \hline
+Age               &  -0.0436    &  0.008   &  -5.264    &  0.000     &   -0.060  &  -0.027 \\
+  \hline
+SibSp             &  -0.3697    &  0.123   &  -3.004    &  0.003     &   -0.611  &  -0.129 \\
+  \hline
+
+\end{tabular}
+\label {tab:logit}
+\end{table}
+
+
+
+
+
+\begin{figure}[h]
+\begin{flushleft}
+\hspace*{-1.2in}
+\includegraphics[scale=0.4]{eps/prediction.eps} % Include the image placeholder.png
+\caption{Prediction from Logit Regression}
+\label {fig:pre}
+\end{flushleft}
+\end{figure}
+
+
+The Figure~\ref{fig:pre} shows the distribution of our predictions. The second graph also indicates that male has a higher possibility of died while female prefer to survive. This is consistent to our previous observations. Also, We can see from the third graph that ship class has slight effect on the prediction result.
+
+
+% (a dependent variable that can take on a limited number of values, whose magnitudes are not meaningful but whose ordering of magnitudes may or may not be meaningful) based on one or more predictor variables. That is, it is used in estimating empirical values of the parameters in a qualitative response model. The probabilities describing the possible outcomes of a single trial are modeled, as a function of the explanatory (predictor) variables, using a logistic function
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
