@@ -1,4 +1,5 @@
-
+import sys
+import os
 
 import pandas as pd
 import numpy as np
@@ -12,11 +13,14 @@ import matplotlib.pyplot as plt
 from pylab import *
 
 from statsmodels.nonparametric.kde import KDEUnivariate
+
+
+lib_path = os.popen("pwd").read()[:-1] + "/lib"
+sys.path.append(lib_path)
 import kaggleaux as ka
 
 
-import sys
-import os
+
 
 def read_file():
 
