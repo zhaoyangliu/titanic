@@ -15,9 +15,9 @@ from pylab import *
 from statsmodels.nonparametric.kde import KDEUnivariate
 
 
-lib_path = os.popen("pwd").read()[:-1] + "/lib"
-sys.path.append(lib_path)
-import kaggleaux as ka
+# lib_path = os.popen("pwd").read()[:-1] + "/lib"
+# sys.path.append(lib_path)
+from lib import kaggleaux as ka
 
 
 
