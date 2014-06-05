@@ -1,7 +1,4 @@
 
-# coding: utf-8
-
-# In[2]:
 
 import pandas as pd
 import numpy as np
@@ -13,6 +10,10 @@ from pandas import Series,DataFrame
 from patsy import dmatrices
 import matplotlib.pyplot as plt
 from pylab import *
+
+from statsmodels.nonparametric.kde import KDEUnivariate
+import kaggleaux as ka
+
 
 import sys
 import os
@@ -138,7 +139,6 @@ def draw_logit_regression(df, kind):
     plt.savefig("2.eps")
 
 
-    from statsmodels.nonparametric.kde import KDEUnivariate
 
     fig = plt.figure(figsize=(18,9), dpi=1600)
     a = .2
@@ -180,7 +180,6 @@ def test_logit_regression(results):
     lib_path = os.popen("pwd").read()[:-1] + "/lib"
     sys.path.append(lib_path)
 
-    import kaggleaux as ka
 
     test_data = pd.read_csv("test.csv")
     test_data['Survived'] = 1.223
