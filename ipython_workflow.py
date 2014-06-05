@@ -14,6 +14,9 @@ from patsy import dmatrices
 import matplotlib.pyplot as plt
 from pylab import *
 
+import sys
+import os
+
 def read_file():
 
     df = pd.read_csv("train.csv")
@@ -104,7 +107,7 @@ def draw_survival_gender_age(df):
 
     plt.savefig("tex/eps/survival_gender_age.eps")
 
-def draw_logit_regression(df):
+def draw_logit_regression(df, kind):
     w = open("logit_result.txt", "w")
     formula = 'Survived ~ C(Pclass) + C(Sex) + Age + SibSp  + C(Embarked)' # here the ~ sign is an = sign, and the features of our dataset
     results = {} # create a results dictionary to hold our regression results for easy analysis later
@@ -113,6 +116,10 @@ def draw_logit_regression(df):
     res = model.fit()
     results['Logit'] = [res, formula]
     print >> w, res.summary()
+
+    if kind is 1:
+        return results
+
     # Plot Predictions Vs Actual
     plt.figure(figsize=(18,4));
     plt.subplot(121, axisbg="#DBDBDB")
@@ -168,13 +175,32 @@ def draw_logit_regression(df):
     plt.savefig("prediction.eps")
 
 
+def test_logit_regression(results):
+
+    lib_path = os.popen("pwd").read()[:-1] + "/lib"
+    sys.path.append(lib_path)
+
+    import kaggleaux as ka
+
+    test_data = pd.read_csv("test.csv")
+    test_data['Survived'] = 1.223
+    print test_data
+
+    compared_results = ka.predict(test_data, results, 'Logit') # Use your model to make prediction on our test set. 
+    print compared_results
+    compared_results = Series(compared_results)                 # convert our model to a series for easy output
+    compared_results.to_csv("logitregres.csv")
+
+
+
 df = read_file()
 # draw_survival(df)
 # draw_survival_on_gender(df)
 # draw_survival_gender_plcass(df)
 # draw_survival_gender_age(df)
-draw_logit_regression(df)
-
+# draw_logit_regression(df)
+results = draw_logit_regression(df, 1)
+test_logit_regression(results)
 
 
 
