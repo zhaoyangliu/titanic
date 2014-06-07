@@ -11,6 +11,7 @@ from pandas import Series,DataFrame
 from patsy import dmatrices
 import matplotlib.pyplot as plt
 from pylab import *
+from sklearn import datasets, svm
 
 from statsmodels.nonparametric.kde import KDEUnivariate
 
@@ -28,6 +29,12 @@ def read_file():
     df = df.drop(['Ticket','Cabin'], axis=1)
     df = df.dropna() # Remove NaN values
     return df
+
+def read_test():
+    test_data = pd.read_csv("test.csv")
+    # test_data = test_data.drop(['Ticket','Cabin'], axis=1)
+    # test_data = test_data.dropna()
+    return test_data
 
 def draw_survival(df):
 
@@ -181,11 +188,9 @@ def draw_logit_regression(df, kind):
 
 def test_logit_regression(results):
 
-    lib_path = os.popen("pwd").read()[:-1] + "/lib"
-    sys.path.append(lib_path)
+    # lib_path = os.popen("pwd").read()[:-1] + "/lib"
+    # sys.path.append(lib_path)
 
-
-    test_data = pd.read_csv("test.csv")
     test_data['Survived'] = 1.223
     print test_data
 
@@ -194,16 +199,99 @@ def test_logit_regression(results):
     compared_results = Series(compared_results)                 # convert our model to a series for easy output
     compared_results.to_csv("logitregres.csv")
 
+def test_SVM(df, test_data):
+    # Create an acceptable formula for our machine learning algorithms
+    formula_ml = 'Survived ~ C(Pclass) + C(Sex) + Age + SibSp + Parch + C(Embarked)'    #set plotting parameters
+    plt.figure(figsize=(8,6))
+
+    # create a regression friendly data frame
+    y, x = dmatrices(formula_ml, data=df, return_type='matrix')
+
+    #select which features we would like to analyze
+    #try chaning the selection here for diffrent output.
+    #Choose : [2,3] - pretty sweet DBs [3,1] --standard DBs [7,3] -very cool DBs, [3,6] -- very long complex dbs, could take over an hour to calculate! 
+    feature_1 = 2
+    feature_2 = 3
+
+    X = np.asarray(x)
+    X = X[:,[feature_1, feature_2]]  
+
+
+    y = np.asarray(y)
+    y = y.flatten()      # needs to be 1 dimenstional so we flatten. it comes out of dmatirces with a shape. 
+
+    n_sample = len(X)
+
+    np.random.seed(0)
+    order = np.random.permutation(n_sample)
+
+    X = X[order]
+    y = y[order].astype(np.float)
+
+    # do a cross validation
+    X_train = X[:.9 * n_sample]
+    y_train = y[:.9 * n_sample]
+    X_test = X[.9 * n_sample:]
+    y_test = y[.9 * n_sample:]
+
+    #create a list of the types of kerneks we will use for your analysis
+    types_of_kernels = ['linear', 'rbf', 'poly']
+
+    # specify our color map for plotting the results
+    color_map = cm.RdBu_r
+
+    # fit the model
+    for fig_num, kernel in enumerate(types_of_kernels):
+        clf = svm.SVC(kernel=kernel, gamma=3)
+        clf.fit(X_train, y_train)
+
+        figure(fig_num)
+        #pl.clf()
+        scatter(X[:, 0], X[:, 1], c=y, zorder=10, cmap=color_map)
+
+        # Circle out the test data
+        scatter(X_test[:, 0], X_test[:, 1], s=80, facecolors='none', zorder=10)
+        
+        axis('tight')
+        x_min = X[:, 0].min()
+        x_max = X[:, 0].max()
+        y_min = X[:, 1].min()
+        y_max = X[:, 1].max()
+
+        XX, YY = np.mgrid[x_min:x_max:200j, y_min:y_max:200j]
+        Z = clf.decision_function(np.c_[XX.ravel(), YY.ravel()])
+
+        # Put the result into a color plot
+        Z = Z.reshape(XX.shape)
+        pcolormesh(XX, YY, Z > 0, cmap=color_map)
+        contour(XX, YY, Z, colors=['k', 'k', 'k'], linestyles=['--', '-', '--'],
+                   levels=[-.5, 0, .5])
+
+        title(kernel)
+        plt.savefig('test_SVM_'+kernel);
+        # show()
+
+    clf = svm.SVC(kernel='poly', gamma=3).fit(X_train, y_train) 
+    test_data['Survived'] = 1.23                                                         
+    y,x = dmatrices(formula_ml, data=test_data, return_type='dataframe')
+
+    res_svm = clf.predict(x.ix[:,[2,8]].dropna())                                        
+
+    res_svm = DataFrame(res_svm,columns=['Survived'])
+    res_svm.to_csv("svm_poly.csv")
 
 
 df = read_file()
+test_data = read_test()
+# print test_data
 # draw_survival(df)
 # draw_survival_on_gender(df)
 # draw_survival_gender_plcass(df)
 # draw_survival_gender_age(df)
-# draw_logit_regression(df)
-results = draw_logit_regression(df, 1)
-test_logit_regression(results)
+# draw_logit_regression(df,0)
+# results = draw_logit_regression(df, 1)
+# test_logit_regression(results)
+test_SVM(df,test_data)
 
 
 
