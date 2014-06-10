@@ -280,6 +280,17 @@ def test_SVM(df, test_data):
     res_svm = DataFrame(res_svm,columns=['Survived'])
     res_svm.to_csv("svm_poly.csv")
 
+def random_forest(df):
+    # df = pd.read_csv("test.csv")
+    #
+    # df['Survived'] = 1.23
+    
+    import sklearn.ensemble as ske
+    formula_ml = 'Survived ~ C(Pclass) + C(Sex) + Age + SibSp + Parch + C(Embarked)'    #set plotting parameters
+    y, x = dmatrices(formula_ml, data=df, return_type='dataframe')
+    results_rf = ske.RandomForestClassifier(n_estimators=100).fit(x,y)
+    z = results_rf.predict_log_proba(x)
+    print "Mean accuracy of Random Forest Predictions on the data was: " + str(z)
 
 df = read_file()
 test_data = read_test()
@@ -291,7 +302,10 @@ test_data = read_test()
 # draw_logit_regression(df,0)
 # results = draw_logit_regression(df, 1)
 # test_logit_regression(results)
-test_SVM(df,test_data)
+# test_SVM(df,test_data)
+random_forest(df)
+
+
 
 
 
