@@ -270,7 +270,7 @@ def test_SVM(df, test_data):
         title(kernel)
         plt.savefig('test_SVM_'+kernel);
         # show()
-
+    #based on poly model
     clf = svm.SVC(kernel='poly', gamma=3).fit(X_train, y_train) 
     test_data['Survived'] = 1.23                                                         
     y,x = dmatrices(formula_ml, data=test_data, return_type='dataframe')
@@ -279,6 +279,69 @@ def test_SVM(df, test_data):
 
     res_svm = DataFrame(res_svm,columns=['Survived'])
     res_svm.to_csv("svm_poly.csv")
+
+    #based on rbf model
+    clf = svm.SVC(kernel='rbf', gamma=3).fit(X_train, y_train) 
+    test_data['Survived'] = 1.23                                                         
+    y,x = dmatrices(formula_ml, data=test_data, return_type='dataframe')
+
+    res_svm = clf.predict(x.ix[:,[2,8]].dropna())                                        
+
+    res_svm = DataFrame(res_svm,columns=['Survived'])
+    res_svm.to_csv("svm_rbf.csv")
+
+    #based on linear model
+    clf = svm.SVC(kernel='linear', gamma=3).fit(X_train, y_train) 
+    test_data['Survived'] = 1.23                                                         
+    y,x = dmatrices(formula_ml, data=test_data, return_type='dataframe')
+
+    res_svm = clf.predict(x.ix[:,[2,8]].dropna())                                        
+
+    res_svm = DataFrame(res_svm,columns=['Survived'])
+    res_svm.to_csv("svm_linear.csv")
+
+def draw_for_SVM_intro():
+    # Create a new figure of size 8x6 points, using 80 dots per inch
+    figure(figsize=(8,6), dpi=80)
+
+    # Create a new subplot from a grid of 1x1
+    subplot(1,1,1)
+
+    X = np.linspace(0, 100, 256,endpoint=True)
+    C = X*X*X/1000000
+
+    # Plot cosine using blue color with a continuous line of width 1 (pixels)
+
+    # Plot sine using green color with a continuous line of width 1 (pixels)
+    plot(X, C, color="red",  linewidth=2.5, linestyle="-")
+
+    # Set x limits
+    xlim(0,100)
+
+    # Set x ticks
+    xticks(np.linspace(0,100,6,endpoint=True))
+
+    # Set y limits
+    ylim(0,1.0)
+
+    # Set y ticks
+    plt.xlabel(r'$x$')
+    plt.ylabel(r'$\frac{x^3}{10^6}$')
+    yticks(np.linspace(0,1,6,endpoint=True))
+    plt.title(r'$x^3$')
+    plt.savefig("tex/eps/x^3.eps",dpi=72)
+    # show()
+    plot(X, C, color="red",  linewidth=2.5, linestyle="-")
+    xticks(np.linspace(1,100,3,endpoint=True))
+    yticks(np.linspace(0.000001,1,7,endpoint=True))
+    # yticks(np.linspace(0,100,2,endpoint=True))
+    axis((1, 100, 0.000001, 1))
+    plt.xlabel(r'$x$')
+    plt.ylabel(r'$log(\frac{x^3}{10^6})$')
+    plt.title(r'$log(x^3)$')
+    yscale('log')
+    xscale('log')
+    plt.savefig("tex/eps/log_x^3.eps",dpi=72)
 
 
 df = read_file()
@@ -292,6 +355,7 @@ test_data = read_test()
 # results = draw_logit_regression(df, 1)
 # test_logit_regression(results)
 test_SVM(df,test_data)
+# draw_for_SVM_intro()
 
 
 

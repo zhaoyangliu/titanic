@@ -184,14 +184,62 @@ After applying the model on the test data, we get an output file. Submitting thi
 %----------------------------------------------------------------------------------------
 
 \section{Next step}
-Next step is too try use support vector machine and random forest methods to make prediction.
+Next step is to try use support vector machine and random forest methods to make prediction.
 
 
 \subsection{SVM}
 
-Logit model we just implemented was great in that it showed exactly where to draw our decision boundary. A linear line is okay, but we can do better with a more complex decision boundary like a wave, circle, or maybe some sort of strange polygon would describe the variance observed in our sample better than a line.
+The logit model we just implemented performed well and showed exactly where to draw our decision boundary or our 'survival cut off'. But when a straight line doesn't cut it, we have to apply a more complex decision boundary like a wave, circle, or maybe some sort of strange polygon, which would describe the variance observed in our sample better than a line. If the prediction of survival were based on age, that could be a linear decision boundary, meaning each additional time you've gone around the sun you were 1 unit more or less likely to survive. But it could be easy to use a curve, where a young healthy people would stand a better  chance of survival than elderly or youth. \\
 
-test
+To get around the fact that our logit model can only evaluate a linear decision boundary, we could transform our logit equation from expressing a linear relationship like so:\\
+
+{\centering
+$Survived=\beta_0+\beta_1Pclass+\beta_2Sex+\beta_3Age+\beta_4SibSp+\beta_5Parch+\beta_6Embarked$}\\
+
+We'll represent this for convenience as: $y=x$ and transform that into a non-linear relationship: $log(y)=log(x)$. An easy way to visualize this by looking at a graph an exponential relationship. Here if we transformed the non-linear by taking the log of our equation, $log(y)=log(x^3)$ we would get a graph like this: 
+\\
+\begin{figure}[ht]
+\begin{minipage}[b]{0.45\linewidth}
+\centering
+\includegraphics[width=2.5in]{eps/X^3.eps}
+\caption{$x^3$}
+\label{fig:figure1}
+\end{minipage}
+\hspace{0.2cm}
+\begin{minipage}[b]{0.45\linewidth}
+\centering
+\includegraphics[width=2.5in]{eps/log_X^3.eps}
+\caption{$log(x^3)$}
+\label{fig:figure2}
+\end{minipage}
+\end{figure}
+\\
+
+This process of Support Vector Machine transforms models and expresses them in a different mathematical plane. We then implemented SVM model and examined the results after the SVM transforms the equation into three different mathematical planes. The first is linear, and is similar to our logic model. Next is a blank transformation and finally an exponential, polynomial transformation.\\
+
+\begin{figure}[ht]
+\begin{minipage}[b]{0.45\linewidth}
+\includegraphics[width=2.4in]{eps/test_SVM_linear.png}
+\caption{linear kernel}
+\label{fig:figure1}
+\end{minipage}
+\begin{minipage}[b]{0.45\linewidth}
+\centering
+\includegraphics[width=2.4in]{eps/test_SVM_rbf.png}
+\caption{rbf kernel}
+\label{fig:figure2}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=2.4in]{eps/test_SVM_poly.png}
+\caption{poly kernel}
+\label {fig:pre}
+\end{figure}
+
+Any value in the blue survived while anyone in the red did not. The graph for the linear transformation creates its decision boundary right on 50\%, which contribute to the guess from earlier. The remaining decision boundaries are much more complex than the original linear decision boundary. These more complex boundaries may be able to capture more structure in the dataset, if that structure exists, and so might create a more powerful predictive model.\\
+
 
 \subsection{Random Forest}
 Random forests are an ensemble learning method for classification (and regression) that operate by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes output by individual trees. This technique is a form of non-parametric modeling that does away with all those equations we created above, and uses raw computing power and a clever statistical observation to tease the structure out of the data.
