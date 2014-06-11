@@ -27,6 +27,9 @@
 \usepackage{natbib} % Required to change bibliography style to APA
 \usepackage{amsmath} % Required for some math elements 
 
+\usepackage{caption}
+\usepackage{subcaption}
+
 \setlength\parindent{15pt} % Removes all indentation from paragraphs
 
 \renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
@@ -55,7 +58,7 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-\section{Current work}
+\section{Problem statement and analysis}
 
 \subsection{Defining the problem}
 
@@ -106,10 +109,10 @@ The point of this competition is to predict if an individual will survive based 
 \end{flushleft}
 \end{figure}
 
-Figure~\ref{fig:test} shows the distribution of survival on gender age and class. ******
+
+\section{Intuitive trial}
 
 
-\subsection{Simple trying}
 In the film, they tried to rescue women and children first, so a good guess would be on gender. From the graphical view of the data, it’s clear that although more men died and survived in raw value counts, females had a greater survival rate proportionally(~25\%), than men (~20\%).\\
 
 After applying that all the female would survive, the survival rate become 36.36\%, which comes close to the original rate 38.38\%. However, we can refine our results by considering other variables.\\
@@ -126,9 +129,9 @@ We ruled out the age factor, as the survival rate doesn't change much with or wi
 % \end{flushleft}
 % \end{figure}
 
-\subsection{Supervised machine learning}
+\section{Supervised machine learning}
 
-In paticular, we are going to try \textbf{Logistic Regression}. In statistics, logistic regression or logit regression is a type of regression analysis used for predicting the outcome of a categorical dependent variable. We use python package \textbf{statsmodels} to build the model and use predictor variable including ``Plass'', ``Sex'', ``Embarked'', ``Age'', ``SibSp''. \\
+In particular, we are going to try \textbf{Logistic Regression}. In statistics, logistic regression or logit regression is a type of regression analysis used for predicting the outcome of a categorical dependent variable. We use python package \textbf{statsmodels} to build the model and use predictor variable including ``Plass'', ``Sex'', ``Embarked'', ``Age'', ``SibSp''. \\
 
 First, we define our formula for our Logit regression. In the next cell we create a regression friendly dataframe that sets up boolean values for the categorical variables in our formula and lets our regression model know the types of inputs we're giving it. The model is then instantiated and fitted before a summary of the model's performance is printed. In the last cell we graphically compare the predictions of our model to the actual values we are trying to predict, as well as the residual errors from our model to check for any structure we may have missed. The result as Table~\ref{tab:logit} shows.
 
@@ -172,7 +175,7 @@ SibSp             &  -0.3697    &  0.123   &  -3.004    &  0.003     &   -0.611 
 \end{figure}
 
 
-The Figure~\ref{fig:pre} shows the distribution of our predictions. The second graph also indicates that male has a higher possibility of died while female prefer to survive. This is consistent to our previous observations. Also, We can see from the third graph that ship class has slight effect on the prediction result. \\
+The Figure 2 shows the distribution of our predictions. The second graph also indicates that male has a higher possibility of died while female prefer to survive. This is consistent to our previous observations. Also, We can see from the third graph that ship class has slight effect on the prediction result. \\
 
 After applying the model on the test data, we get an output file. Submitting this file shows that we got 77.03\%.
 
@@ -183,8 +186,8 @@ After applying the model on the test data, we get an output file. Submitting thi
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 
-\section{Next step}
-Next step is to try use support vector machine and random forest methods to make prediction.
+\section{Unsupervised machine learning}
+In machine learning, the problem of unsupervised learning is that of trying to find hidden structure in unlabeled data. Since the examples given to the learner are unlabeled, there is no error or reward signal to evaluate a potential solution. 
 
 
 \subsection{SVM}
@@ -217,34 +220,37 @@ We'll represent this for convenience as: $y=x$ and transform that into a non-lin
 
 This process of Support Vector Machine transforms models and expresses them in a different mathematical plane. We then implemented SVM model and examined the results after the SVM transforms the equation into three different mathematical planes. The first is linear, and is similar to our logic model. Next is a blank transformation and finally an exponential, polynomial transformation.\\
 
-\begin{figure}[ht]
-\begin{minipage}[b]{0.45\linewidth}
-\includegraphics[width=2.4in]{eps/test_SVM_linear.png}
-\caption{linear kernel}
-\label{fig:figure1}
-\end{minipage}
-\begin{minipage}[b]{0.45\linewidth}
-\centering
-\includegraphics[width=2.4in]{eps/test_SVM_rbf.png}
-\caption{rbf kernel}
-\label{fig:figure2}
-\end{minipage}
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}	  
+		\hspace*{-1.8in}
+		\vspace*{0.15in}
+		\includegraphics[width=2\textwidth]{eps/test_SVM_linear.png}
+		\label{fig:figure1}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\hspace*{-0.55in}
+		\includegraphics[width=2\textwidth]{eps/test_SVM_rbf.png}
+		\label{fig:figure2}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\hspace*{0.7in}
+		\includegraphics[width=2\textwidth]{eps/test_SVM_poly.png}
+		\label {fig:pre}
+	\end{subfigure}
+	\caption{SVM results. Left: Linear kernel. Middle: RBF kernel. Right: Poly kernel}
+	\label{fig:svm}
+
 \end{figure}
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=2.4in]{eps/test_SVM_poly.png}
-\caption{poly kernel}
-\label {fig:pre}
-\end{figure}
+
+	
+
+
+
 
 Any value in the blue survived while anyone in the red did not. The graph for the linear transformation creates its decision boundary right on 50\%, which contribute to the guess from earlier. The remaining decision boundaries are much more complex than the original linear decision boundary. These more complex boundaries may be able to capture more structure in the dataset, if that structure exists, and so might create a more powerful predictive model.\\
 
-
-
-
-\subsection{Random Forest}
-Random forests are an ensemble learning method for classification (and regression) that operate by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes output by individual trees. This technique is a form of non-parametric modeling that does away with all those equations we created above, and uses raw computing power and a clever statistical observation to tease the structure out of the data.
 
 \input{random_forest_section.tex}
 
@@ -253,8 +259,39 @@ Random forests are an ensemble learning method for classification (and regressio
 %----------------------------------------------------------------------------------------
 
 
-\section{Possible results}
+\section{Conclusion}
 
-SVM and Random Forest are supposed to perform better than Logit model, maybe could get an accuracy more than 0.8
+In this project, we tried to use machine learning knowledge to predict the survival rate on Titanic based on the passenger's information including sex, class, age and so on. We build several models, from the most intuitive model about age and male, and following supervised machine learning model logit regression, to the final unsupervised machine learning model including SVM and random forest. We learned a lot about using Python package to data processing like \textbf{Pandas, Numpy, Patsy}, they are really helpful and powerful. We also learned how to use matploit to draw professional graphs. 
+
+Even though we keep trying more and more complicated model, we didn't get a significant improvement on the results. This is somehow frustrating, but it also inform us following tips:
+
+\begin{itemize}
+	\item Sometimes, concise, simple views of data reveal their true patterns and nature, this means simple model could also get a good performance.
+	\item Performance of model is closely related to the structure of dataset. A small dataset and simple binary result may limit the performance of complicate model.
+\end{itemize}
+
+\section{Future work}
+Even though we have tried some models both in supervised and unsupervised machine learning, there are some more methods and models we would like to try for this dataset. 
+
+First is that we could use software Weka to do the analysis. We didn't do it for this project mainly because we can use it, but hard to learn the knowledge from the reason. So it would be better to implement it by ourselves. However, playing the dataset in Weka will be effective and easy to tried different technology. 
+
+Second is that we can try dig deeper for each model and take more trial for different predictor. Or we can think about more ways to deal with empty data since currently we ignore incomplete data which make make a negative effects on training dataset.
+
 
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

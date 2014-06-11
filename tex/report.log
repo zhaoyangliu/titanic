@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  9 JUN 2014 17:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  10 JUN 2014 21:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -529,7 +529,29 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip77
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count150
-) (./report.aux
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen161
+\captionmargin@=\dimen162
+\captionwidth=\dimen163
+\caption@tempdima=\dimen164
+\caption@indent=\dimen165
+\caption@parindent=\dimen166
+\caption@hangindent=\dimen167
+)
+\c@ContinuedFloat=\count151
+)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
+\c@subfigure=\count152
+\c@subtable=\count153
+)
+(./report.aux
 
 LaTeX Warning: Label `fig:figure1' multiply defined.
 
@@ -542,30 +564,30 @@ LaTeX Warning: Label `fig:pre' multiply defined.
 )
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
+LaTeX Font Info:    ... okay on input line 50.
  (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count151
-\scratchdimen=\dimen161
+\scratchcounter=\count154
+\scratchdimen=\dimen168
 \scratchbox=\box51
-\nofMPsegments=\count152
-\nofMParguments=\count153
+\nofMPsegments=\count155
+\nofMParguments=\count156
 \everyMPshowfont=\toks30
-\MPscratchCnt=\count154
-\MPscratchDim=\dimen162
-\MPnumerator=\count155
-\makeMPintoPDFobject=\count156
+\MPscratchCnt=\count157
+\MPscratchDim=\dimen169
+\MPnumerator=\count158
+\makeMPintoPDFobject=\count159
 \everyMPtoPDFconversion=\toks31
 ) (/usr/local/texlive/2013/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -619,32 +641,34 @@ Dictionary: translator-basic-dictionary, Language: English
 ons.cfg
 File: siunitx-abbreviations.cfg 2013/03/11 v2.5q siunitx: Abbreviated units
 )
-\c__siunitx_mathsf_int=\count157
-\c__siunitx_mathtt_int=\count158
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+\c__siunitx_mathsf_int=\count160
+\c__siunitx_mathtt_int=\count161
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--67
+Underfull \hbox (badness 10000) in paragraph at lines 66--70
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 69.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 72.
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 69.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 72.
  [1
 
 {/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Package epstopdf Info: Source file: <eps/survival_gender_age.eps>
-(epstopdf)                    date: 2014-06-06 18:59:51
+(epstopdf)                    date: 2014-06-07 11:24:38
 (epstopdf)                    size: 46359 bytes
 (epstopdf)             Output file: <eps/survival_gender_age-eps-converted-to.p
 df>
-(epstopdf)                    date: 2014-06-07 16:48:59
+(epstopdf)                    date: 2014-06-10 18:29:23
 (epstopdf)                    size: 17188 bytes
 (epstopdf)             Command: <repstopdf --outfile=eps/survival_gender_age-ep
 s-converted-to.pdf eps/survival_gender_age.eps>
-(epstopdf)             \includegraphics on input line 101.
+(epstopdf)             \includegraphics on input line 104.
 Package epstopdf Info: Output file is already uptodate.
 
 <eps/survival_gender_age-eps-converted-to.pdf, id=12, 1300.86pt x 289.08pt>
@@ -652,18 +676,18 @@ File: eps/survival_gender_age-eps-converted-to.pdf Graphic file (type pdf)
 
 <use eps/survival_gender_age-eps-converted-to.pdf>
 Package pdftex.def Info: eps/survival_gender_age-eps-converted-to.pdf used on i
-nput line 101.
+nput line 104.
 (pdftex.def)             Requested size: 520.3348pt x 115.62994pt.
 Package epstopdf Info: Source file: <eps/survival_gender_class.eps>
-(epstopdf)                    date: 2014-06-05 16:25:48
+(epstopdf)                    date: 2014-05-20 11:20:01
 (epstopdf)                    size: 41839 bytes
 (epstopdf)             Output file: <eps/survival_gender_class-eps-converted-to
 .pdf>
-(epstopdf)                    date: 2014-06-05 16:25:48
+(epstopdf)                    date: 2014-05-21 20:56:13
 (epstopdf)                    size: 17051 bytes
 (epstopdf)             Command: <repstopdf --outfile=eps/survival_gender_class-
 eps-converted-to.pdf eps/survival_gender_class.eps>
-(epstopdf)             \includegraphics on input line 103.
+(epstopdf)             \includegraphics on input line 106.
 Package epstopdf Info: Output file is already uptodate.
 
 <eps/survival_gender_class-eps-converted-to.pdf, id=13, 1300.86pt x 289.08pt>
@@ -671,15 +695,15 @@ File: eps/survival_gender_class-eps-converted-to.pdf Graphic file (type pdf)
 
 <use eps/survival_gender_class-eps-converted-to.pdf>
 Package pdftex.def Info: eps/survival_gender_class-eps-converted-to.pdf used on
- input line 103.
+ input line 106.
 (pdftex.def)             Requested size: 520.3348pt x 115.62994pt.
 
-Overfull \hbox (90.83324pt too wide) in paragraph at lines 100--104
+Overfull \hbox (90.83324pt too wide) in paragraph at lines 103--107
 |  [] 
  []
 
 
-Overfull \hbox (90.83324pt too wide) in paragraph at lines 100--104
+Overfull \hbox (90.83324pt too wide) in paragraph at lines 103--107
 |  []  
  []
 
@@ -687,128 +711,125 @@ Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
 
  []
 
 [2 <./eps/survival_gender_age-eps-converted-to.pdf> <./eps/survival_gender_clas
 s-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 115--116
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
+Underfull \hbox (badness 10000) in paragraph at lines 134--135
 
  []
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 140.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 143.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 140.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 143.
 
-Overfull \hbox (20.81183pt too wide) in paragraph at lines 138--159
+Overfull \hbox (20.81183pt too wide) in paragraph at lines 141--162
 [][]
  []
 
 Package epstopdf Info: Source file: <eps/prediction.eps>
-(epstopdf)                    date: 2014-05-22 21:56:29
+(epstopdf)                    date: 2014-05-22 21:05:40
 (epstopdf)                    size: 373554 bytes
 (epstopdf)             Output file: <eps/prediction-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-06-05 16:09:15
+(epstopdf)                    date: 2014-06-07 11:24:38
 (epstopdf)                    size: 278038 bytes
 (epstopdf)             Command: <repstopdf --outfile=eps/prediction-eps-convert
 ed-to.pdf eps/prediction.eps>
-(epstopdf)             \includegraphics on input line 168.
+(epstopdf)             \includegraphics on input line 171.
 Package epstopdf Info: Output file is already uptodate.
 <eps/prediction-eps-converted-to.pdf, id=81, 1300.86pt x 650.43pt>
 File: eps/prediction-eps-converted-to.pdf Graphic file (type pdf)
 
 <use eps/prediction-eps-converted-to.pdf>
 Package pdftex.def Info: eps/prediction-eps-converted-to.pdf used on input line
- 168.
+ 171.
 (pdftex.def)             Requested size: 520.3348pt x 260.16739pt.
 
-Overfull \hbox (90.83324pt too wide) in paragraph at lines 167--169
+Overfull \hbox (90.83324pt too wide) in paragraph at lines 170--172
 |  []  
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 178--179
 
  []
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 192--193
+
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
 
  []
 
 [4 <./eps/prediction-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 194--195
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 197--198
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--201
+
+ []
+
 Package epstopdf Info: Source file: <eps/X^3.eps>
-(epstopdf)                    date: 2014-06-07 16:26:59
+(epstopdf)                    date: 2014-06-08 15:30:49
 (epstopdf)                    size: 21009 bytes
 (epstopdf)             Output file: <eps/X^3-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-06-07 16:59:36
+(epstopdf)                    date: 2014-06-10 18:29:23
 (epstopdf)                    size: 12780 bytes
 (epstopdf)             Command: <repstopdf --outfile=eps/X^3-eps-converted-to.p
 df eps/X^3.eps>
-(epstopdf)             \includegraphics on input line 204.
+(epstopdf)             \includegraphics on input line 207.
 Package epstopdf Info: Output file is already uptodate.
 <eps/X^3-eps-converted-to.pdf, id=136, 578.16pt x 433.62pt>
 File: eps/X^3-eps-converted-to.pdf Graphic file (type pdf)
 
 <use eps/X^3-eps-converted-to.pdf>
-Package pdftex.def Info: eps/X^3-eps-converted-to.pdf used on input line 204.
+Package pdftex.def Info: eps/X^3-eps-converted-to.pdf used on input line 207.
 (pdftex.def)             Requested size: 180.67499pt x 135.5059pt.
 
-Overfull \hbox (25.42604pt too wide) in paragraph at lines 204--205
+Overfull \hbox (25.42604pt too wide) in paragraph at lines 207--208
  [][] 
  []
 
 Package epstopdf Info: Source file: <eps/log_X^3.eps>
-(epstopdf)                    date: 2014-06-07 16:26:59
+(epstopdf)                    date: 2014-06-08 15:30:49
 (epstopdf)                    size: 48112 bytes
 (epstopdf)             Output file: <eps/log_X^3-eps-converted-to.pdf>
-(epstopdf)                    date: 2014-06-07 17:05:33
+(epstopdf)                    date: 2014-06-10 18:29:23
 (epstopdf)                    size: 17667 bytes
 (epstopdf)             Command: <repstopdf --outfile=eps/log_X^3-eps-converted-
 to.pdf eps/log_X^3.eps>
-(epstopdf)             \includegraphics on input line 211.
+(epstopdf)             \includegraphics on input line 214.
 Package epstopdf Info: Output file is already uptodate.
 <eps/log_X^3-eps-converted-to.pdf, id=137, 578.16pt x 433.62pt>
 File: eps/log_X^3-eps-converted-to.pdf Graphic file (type pdf)
 
 <use eps/log_X^3-eps-converted-to.pdf>
 Package pdftex.def Info: eps/log_X^3-eps-converted-to.pdf used on input line 21
-1.
+4.
 (pdftex.def)             Requested size: 180.67499pt x 135.5059pt.
 
-Overfull \hbox (25.42604pt too wide) in paragraph at lines 211--212
+Overfull \hbox (25.42604pt too wide) in paragraph at lines 214--215
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--217
+Underfull \hbox (badness 10000) in paragraph at lines 202--220
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
 
  []
 
@@ -816,53 +837,50 @@ Underfull \hbox (badness 10000) in paragraph at lines 218--219
 File: eps/test_SVM_linear.png Graphic file (type png)
 
 <use eps/test_SVM_linear.png>
-Package pdftex.def Info: eps/test_SVM_linear.png used on input line 222.
-(pdftex.def)             Requested size: 173.44756pt x 130.08038pt.
-
-Overfull \hbox (18.19861pt too wide) in paragraph at lines 222--223
-[][] 
- []
+Package pdftex.def Info: eps/test_SVM_linear.png used on input line 228.
+(pdftex.def)             Requested size: 207.0021pt x 155.24954pt.
 
 <eps/test_SVM_rbf.png, id=140, 578.16pt x 433.62pt>
 File: eps/test_SVM_rbf.png Graphic file (type png)
  <use eps/test_SVM_rbf.png>
-Package pdftex.def Info: eps/test_SVM_rbf.png used on input line 228.
-(pdftex.def)             Requested size: 173.44756pt x 130.08038pt.
+Package pdftex.def Info: eps/test_SVM_rbf.png used on input line 233.
+(pdftex.def)             Requested size: 207.0021pt x 155.24954pt.
 
-Overfull \hbox (18.19861pt too wide) in paragraph at lines 228--229
- [][] 
+Overfull \hbox (65.97455pt too wide) in paragraph at lines 232--235
+[]|  []
  []
 
 <eps/test_SVM_poly.png, id=141, 578.16pt x 433.62pt>
 File: eps/test_SVM_poly.png Graphic file (type png)
 
 <use eps/test_SVM_poly.png>
-Package pdftex.def Info: eps/test_SVM_poly.png used on input line 236.
-(pdftex.def)             Requested size: 173.44756pt x 130.08038pt.
+Package pdftex.def Info: eps/test_SVM_poly.png used on input line 238.
+(pdftex.def)             Requested size: 207.0021pt x 155.24954pt.
+
+Overfull \hbox (156.31204pt too wide) in paragraph at lines 237--240
+[]|  []
+ []
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 241--242
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
 
  []
 
-[5 <./eps/X^3-eps-converted-to.pdf> <./eps/log_X^3-eps-converted-to.pdf>]
-[6 <./eps/test_SVM_linear.png> <./eps/test_SVM_rbf.png> <./eps/test_SVM_poly.pn
-g>] (./report.aux)
+(./random_forest_section.tex [5 <./eps/X^3-eps-converted-to.pdf> <./eps/log_X^3
+-eps-converted-to.pdf>]) [6 <./eps/test_SVM_linear.png> <./eps/test_SVM_rbf.png
+> <./eps/test_SVM_poly.png>] [7] (./report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 11148 strings out of 493315
- 240132 string characters out of 6137904
- 251635 words of memory out of 5000000
- 14447 multiletter control sequences out of 15000+600000
+ 12248 strings out of 493315
+ 260062 string characters out of 6137904
+ 272305 words of memory out of 5000000
+ 15536 multiletter control sequences out of 15000+600000
  12491 words of font info for 47 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,8n,30p,701b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,8n,38p,849b,591s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -873,10 +891,10 @@ sr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 ocal/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
 l/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (6 pages, 514083 bytes).
+Output written on report.pdf (7 pages, 517946 bytes).
 PDF statistics:
- 230 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
+ 235 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

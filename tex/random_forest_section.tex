@@ -1,0 +1,19 @@
+\subsection{Random Forest}
+Random forests are an ensemble learning method for classification (and regression) that operate by constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes output by individual trees.
+
+In this case, we will use random forest to predict the survival rate. Using Python package \textbf{scikit-learn}, we just need to initiate the model with training dataset and deal with small points like type matching and missing data filled.
+
+A random forest algorithm randomly generates many extremely simple models to explain the variance observed in random subsections of our data. These models are all awful individually. Really awful. But once they are averaged, they can be powerful predictive tools. The averaging step is the secret sauce. While the vast majority of those models were extremely poor; they were all as bad as each other on average. So when their predictions are averaged together, the bad ones average their effect on our model out to zero. The thing that remains, if anything, is one or a handful of those models have stumbled upon the true structure of the data. The cell below shows the process of instantiating and fitting a random forest, generating predictions form the resulting model, and then scoring the results.
+
+The procedure of using random forest could be concluded as these:
+\begin{itemize}
+	\item Import the random forest package
+	\item  Create the random forest object which will include all the parameters for the fit
+	\item Fit the training data to the Survived labels and create the decision trees
+	\item Take the same decision trees and run it on the test data
+\end{itemize}
+
+Results shows that the accuracy is about 79.9\%.
+
+
+
