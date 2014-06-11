@@ -370,7 +370,7 @@ test_data = read_test()
 # draw_for_SVM_intro()
 
 
-random_forest(df)
+# random_forest(df)
 
 
 
